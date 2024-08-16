@@ -37,14 +37,14 @@ local ExampleToggle2 = Groupbox1:CreateToggle("Example keybind", function(state)
    print(state)
 end)
 
-local ExampleButton = Groupbox1:CreateButton("bot tp", function()repeat wait() until game:GetService("Players").LocalPlayer.Character
+local ExampleButton = Groupbox1:CreateButton("bot tp", function(state)repeat wait() until game:GetService("Players").LocalPlayer.Character
             game:GetService("RunService").RenderStepped:Connect(function()
             wait(0.2)
             game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-4307.355, -94.167, -813.885) 
             end)
     print("Pressed")
 end)
-  local ExampleButton = Groupbox1:CreateButton("one hit", function()game:GetService"RunService".RenderStepped:Connect(function()
+  local ExampleButton = Groupbox1:CreateButton("one hit", function(state)game:GetService"RunService".RenderStepped:Connect(function()
         local Players = game:GetService("Players")
         local LocalPlayer = Players.LocalPlayer
         
