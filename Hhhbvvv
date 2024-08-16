@@ -1,0 +1,57 @@
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+    game:GetService("VirtualUser"):Button2Down(Vector2.new(0,0), Workspace.CurrentCamera.CFrame)
+   wait(1)
+   game:GetService("VirtualUser"):Button2Up(Vector2.new(0,0), Workspace.CurrentCamera.CFrame)
+end)
+
+
+
+local killactive = false
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/WetCheezit/Bracket-V2/main/src.lua"))()
+
+-- Window
+local Window, MainGUI = Library:CreateWindow("Bracket-V2")
+
+-- Tabs
+local Tab1 = Window:CreateTab("Tab 1")
+local Tab2 = Window:CreateTab("Tab 2")
+
+local Groupbox1 = Tab1:CreateGroupbox("Groupbox 1", "Left")
+local Groupbox2 = Tab1:CreateGroupbox("Groupbox 2", "Right")
+
+local Groupbox3 = Tab2:CreateGroupbox("Groupbox 1", "Left")
+local Groupbox4 = Tab2:CreateGroupbox("Groupbox 2", "Right")
+
+-- Groupbox 1
+local ExampleToggle = Groupbox1:CreateToggle("auto equip fists", function(state)while wait() do
+    for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+        if v.name == "Fists" then
+            v.Parent = game.Players.LocalPlayer.Character
+        end
+    end
+end
+   print(state)
+end)
+local ExampleToggle2 = Groupbox1:CreateToggle("Example keybind", function(state)
+   print(state)
+end)
+
+local ExampleButton = Groupbox1:CreateButton("bot tp", function()repeat wait() until game:GetService("Players").LocalPlayer.Character
+            game:GetService("RunService").RenderStepped:Connect(function()
+            wait(0.2)
+            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-4307.355, -94.167, -813.885) 
+            end)
+    print("Pressed")
+end)
+  local ExampleButton = Groupbox1:CreateButton("one hit", function()game:GetService"RunService".RenderStepped:Connect(function()
+        local Players = game:GetService("Players")
+        local LocalPlayer = Players.LocalPlayer
+        
+        LocalPlayer.Character.Humanoid:GetPropertyChangedSignal("Health"):Connect(function(v)
+            LocalPlayer.Character.Humanoid.Health = 0
+        end)
+        end)
+
+    print("Pressed")
+end)
